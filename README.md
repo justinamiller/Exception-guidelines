@@ -1,5 +1,9 @@
-# Exception-guidelines - "Do’s and Don’ts for Exceptions"
+# Exception-guidelines
 
+### When Should You Log Exceptions?
+The short and sweet answer is that you should always log exceptions. For many developers, the general rule of thumb is to log exceptions when code could crash. The problem with this approach, however, is that even the simplest code can cause crashes in the application.
+
+### "Do’s and Don’ts for Exceptions"
 1. Don’t just wrap an entire method with one try-catch. Place try-catch around specific code.
 
 **Wrong**
