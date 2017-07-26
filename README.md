@@ -96,6 +96,10 @@ Console.WriteLine($"27th letter of alphabet : { letter }");k
 ````
 Similarly, you might want to check for the existence of a file with the same name before an attempt to copying a new file.  This could be gracefully handled by changing the resulting file name and providing the new file name back as a result.
 
+***3. Avoid generic, catch-all exception handling***
+
+Not only should you not throw exceptions for conditions that are expected to occur regularly, you should also always aim to catch specific exceptions, rather than generic exceptions.  This has become finer grained in C# 6 as it supports filtering using catch ... when and supplying a suitable predicate.
+
 ````
 // handle specific exception differently
 
@@ -125,11 +129,6 @@ catch (Exception ex) when (ex.InnerException != null)
     Console.WriteLine("An InnerException exists : \n\n" + ex.ToString() + "\n");
 }
 ````
-
-
-***3. Avoid generic, catch-all exception handling***
-
-Not only should you not throw exceptions for conditions that are expected to occur regularly, you should also always aim to catch specific exceptions, rather than generic exceptions.  This has become finer grained in C# 6 as it supports filtering using catch ... when and supplying a suitable predicate.
 
 ***4. Async and exception handling***
 
