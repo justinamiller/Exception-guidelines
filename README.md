@@ -3,6 +3,40 @@
 ### When Should You Log Exceptions?
 The short and sweet answer is that you should always log exceptions. For many developers, the general rule of thumb is to log exceptions when code could crash. The problem with this approach, however, is that even the simplest code can cause crashes in the application.
 
+### Top five tips for handling .NET Exceptions.
+
+1. Maintain your stack trace
+When you first start programming in .NET you might think that you catch the exception, try some stuff but rethrow that exception if you couldn’t handle it.  Or, you may have defined your own exception class.  It might have looked like the following code.
+
+In both these cases, you will find that the stack trace provided with your exception will go no further down the call stack than the method PartialStackTrace.
+````
+private double PartialStackTrace()
+{
+  try
+  {
+       return DivideANumber(1, 0);
+  }
+  catch (Exception ex)
+  {
+       throw ex;
+  }
+}
+
+OR
+
+private double PartialStackTrace()
+{
+  try
+  {
+       return DivideANumber(1, 0);
+  }
+  catch (Exception ex)
+  {
+       throw new MyAppException(“Ooops!”);
+  }
+}
+````
+
 ### "Do’s and Don’ts for Exceptions"
 1. Don’t just wrap an entire method with one try-catch. Place try-catch around specific code.
 
