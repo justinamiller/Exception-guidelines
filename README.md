@@ -5,7 +5,7 @@ The short and sweet answer is that you should always log exceptions. For many de
 
 ### Top five tips for handling .NET Exceptions.
 
-1. Maintain your stack trace
+***1. Maintain your stack trace***
 When you first start programming in .NET you might think that you catch the exception, try some stuff but rethrow that exception if you couldn’t handle it.  Or, you may have defined your own exception class.  It might have looked like the following code.
 
 In both these cases, you will find that the stack trace provided with your exception will go no further down the call stack than the method PartialStackTrace.
@@ -69,7 +69,7 @@ private double FullStackTrace()
 }
 ````
 
-2. Keep exceptions exceptional…
+***2. Keep exceptions exceptional…***
 This sounds a bit trite, but sometimes you won’t need exceptions as you know there will be times that you will receive data or be in a situation where an exception might occur, and you know how to handle it.
 
 As an example, it is trivial to verify that a key exists in a dictionary prior to attempting to access a value, and save having to wrap dictionary access in a try … catch block.
@@ -125,7 +125,7 @@ catch (Exception ex) when (ex.InnerException != null)
 ````
 
 
-3. Avoid generic, catch-all exception handling
+***3. Avoid generic, catch-all exception handling***
 Not only should you not throw exceptions for conditions that are expected to occur regularly, you should also always aim to catch specific exceptions, rather than generic exceptions.  This has become finer grained in C# 6 as it supports filtering using catch ... when and supplying a suitable predicate.
 
 
